@@ -173,6 +173,14 @@ class ProductModule {
     {
         // Logic to retrieve all unique tags from products
 
+        if(config("database.default") === "sqlite") {
+            // For SQLite, we need to use a different approach to extract tags
+            return config("product-module.product_class")::selectRaw("DISTINCT json_each.value AS tag")
+                ->join("json_each(tags)", "json_each.value", "LIKE", "%")
+                ->pluck("tag")
+                ->toArray();
+        }
+
         return config("product-module.product_class")::selectRaw("DISTINCT JSON_UNQUOTE(JSON_EXTRACT(tags, '$[*]')) AS tag")
             ->pluck("tag")
             ->toArray();
