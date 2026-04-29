@@ -19,7 +19,8 @@ class Product extends Model
     ];
     protected $casts = [
         "type" => ProductType::class,
-        "meta_data" => "json"
+        "meta_data" => "json",
+        "tags" => "json"
     ];
 
     public function brand() : \Illuminate\Database\Eloquent\Relations\BelongsTo

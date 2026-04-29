@@ -7,6 +7,7 @@ use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
@@ -60,6 +61,9 @@ class ProductForm
                             ->label('SKU'),
                         Toggle::make('is_active')
                             ->required(),
+                        TagsInput::make('tags')
+                            ->label('Tags')
+                            ->columnSpanFull(),
                         KeyValue::make('meta_data')
                             ->columnSpanFull(),
                     ])

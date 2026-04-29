@@ -25,6 +25,7 @@ class ProductModule {
             "brand_id" => $productData->brand_id,
             "sku" => $productData->sku,
             "is_active" => $productData->is_active,
+            "tags" => $productData->tags,
             "meta_data" => $productData->meta_data
         ]);
     }
@@ -159,6 +160,13 @@ class ProductModule {
 
         $product = config("product-module.product_class")::findOrFail($productId);
         $product->delete();
+    }
+
+    public function getProductByTag(string $tag) : \Illuminate\Database\Eloquent\Collection
+    {
+        // Logic to retrieve products by tag
+
+        return config("product-module.product_class")::whereJsonContains("tags", $tag)->get();
     }
 
 }

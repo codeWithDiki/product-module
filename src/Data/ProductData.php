@@ -17,6 +17,7 @@ class ProductData extends \Spatie\LaravelData\Data
         public ?int $brand_id = null,
         public ?string $sku = null,
         public bool $is_active = false,
+        public ?array $tags = null,
         public ?array $meta_data
     ) {
     }
