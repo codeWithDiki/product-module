@@ -169,4 +169,13 @@ class ProductModule {
         return config("product-module.product_class")::whereJsonContains("tags", $tag)->get();
     }
 
+    public function getTags() : array
+    {
+        // Logic to retrieve all unique tags from products
+
+        return config("product-module.product_class")::selectRaw("DISTINCT JSON_UNQUOTE(JSON_EXTRACT(tags, '$[*]')) AS tag")
+            ->pluck("tag")
+            ->toArray();
+    }
+
 }
