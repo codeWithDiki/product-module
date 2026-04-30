@@ -26,6 +26,11 @@ class ProductColorResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'label';
 
+    public static function getModel(): string
+    {
+        return config('product-module.product_color_class', ProductColor::class);
+    }
+
     public static function form(Schema $schema): Schema
     {
         return ProductColorForm::configure($schema);

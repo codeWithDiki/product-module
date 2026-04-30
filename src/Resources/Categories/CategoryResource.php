@@ -26,6 +26,11 @@ class CategoryResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
+    public static function getModel(): string
+    {
+        return config('product-module.category_class', Category::class);
+    }
+
     public static function form(Schema $schema): Schema
     {
         return CategoryForm::configure($schema);

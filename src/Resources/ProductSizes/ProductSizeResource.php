@@ -26,6 +26,11 @@ class ProductSizeResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'label';
 
+    public static function getModel(): string
+    {
+        return config('product-module.product_size_class', ProductSize::class);
+    }
+
     public static function form(Schema $schema): Schema
     {
         return ProductSizeForm::configure($schema);

@@ -26,6 +26,11 @@ class ProductReviewResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'from';
 
+    public static function getModel(): string
+    {
+        return config('product-module.product_review_class', ProductReview::class);
+    }
+
     public static function form(Schema $schema): Schema
     {
         return ProductReviewForm::configure($schema);

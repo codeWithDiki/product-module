@@ -26,6 +26,11 @@ class ProductImageResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'image_url';
 
+    public static function getModel(): string
+    {
+        return config('product-module.product_image_class', ProductImage::class);
+    }
+
     public static function form(Schema $schema): Schema
     {
         return ProductImageForm::configure($schema);

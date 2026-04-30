@@ -26,6 +26,11 @@ class BrandResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
+    public static function getModel(): string
+    {
+        return config('product-module.brand_class', Brand::class);
+    }
+
     public static function form(Schema $schema): Schema
     {
         return BrandForm::configure($schema);

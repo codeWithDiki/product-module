@@ -26,6 +26,11 @@ class ProductVariantResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
+    public static function getModel(): string
+    {
+        return config('product-module.product_variant_class', ProductVariant::class);
+    }
+
     public static function form(Schema $schema): Schema
     {
         return ProductVariantForm::configure($schema);
