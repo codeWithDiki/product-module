@@ -1,12 +1,5 @@
 # Product Module
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/codewithdiki/product-module.svg?style=flat-square)](https://packagist.org/packages/codewithdiki/product-module)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/codewithdiki/product-module/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/codewithdiki/product-module/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/codewithdiki/product-module/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/codewithdiki/product-module/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/codewithdiki/product-module.svg?style=flat-square)](https://packagist.org/packages/codewithdiki/product-module)
-
----
-
 Pernah nggak kamu bikin aplikasi Laravel dan harus nulis fitur produk dari nol lagi? Mulai dari model, migrasi, relasi, sampai panel admin — semuanya berulang terus. **Product Module** hadir untuk menyelesaikan masalah itu.
 
 Package ini menyediakan sistem manajemen produk yang sudah siap pakai: brand, kategori, varian, warna, ukuran, ulasan, gambar, hingga manajemen stok — semuanya dalam satu package yang bisa langsung kamu pasang ke aplikasi Laravel-mu.
@@ -62,7 +55,33 @@ Pastikan lingkungan kamu sudah memenuhi spesifikasi berikut sebelum memasang pac
 
 ## Instalasi
 
-Pasang package via Composer:
+Sebelum menginstal Product Module, kamu harus membuat akun terlebih dahulu di : [sini](https://dikiakbarasyidiq.dev/auth/register). Setelah membuat akun buka halaman (Dashboard → Account) untuk melihat license key kamu.
+
+Copy license key kamu lalu jalankan command ini :
+
+```bash
+composer config bearer.dikiakbarasyidiq.dev <license_key>
+```
+
+Setelah menjalankan command diatas, tambahkan repository berikut di file composer.json. (Jika Belum Ada)
+```
+{
+"repositories": [
+        {
+            "type" : "composer",
+            "url" : "https://dikiakbarasyidiq.dev"
+        }
+    ]
+}
+```
+
+Setelah menambahkan repository, update composer terlebih dahulu:
+
+```bash
+composer update
+```
+
+Lalu kamu akan bisa melakukan installasi via composer di project kamu dengan command :
 
 ```bash
 composer require codewithdiki/product-module
