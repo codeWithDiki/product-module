@@ -47,6 +47,9 @@ class ProductResource extends Resource
             RelationManagers\CategoriesRelationManager::class,
             RelationManagers\VariantsRelationManager::class,
             RelationManagers\ImagesRelationManager::class,
+            RelationManagers\ReviewsRelationManager::class,
+            RelationManagers\ColorsRelationManager::class,
+            RelationManagers\SizesRelationManager::class,
         ];
     }
 

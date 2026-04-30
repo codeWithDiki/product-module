@@ -21,7 +21,10 @@ class ProductModuleFilament implements Plugin
                 Resources\Brands\BrandResource::class,
                 Resources\Products\ProductResource::class,
                 Resources\ProductVariants\ProductVariantResource::class,
-                Resources\ProductImages\ProductImageResource::class
+                Resources\ProductImages\ProductImageResource::class,
+                Resources\ProductReviews\ProductReviewResource::class,
+                Resources\ProductColors\ProductColorResource::class,
+                Resources\ProductSizes\ProductSizeResource::class,
             ])
             ->pages([
 
