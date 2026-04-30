@@ -7,6 +7,7 @@ use CodeWithDiki\ProductModule\Enums\ProductType;
 use Illuminate\Database\Eloquent\Attributes\UseFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Storage;
 
 #[UseFactory(ProductFactory::class)]
@@ -43,6 +44,26 @@ class Product extends Model
         return $this->hasMany(config("product-module.product_image_class"));
     }
 
+    public function reviews() : \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(config("product-module.product_review_class"));
+    }
+
+    public function wrappers() : \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(config("product-module.product_wrapper_class"));
+    }
+
+    public function colors() : HasMany
+    {
+        return $this->hasMany(config("product-module.product_color_class"));
+    }
+
+    public function sizes() : HasMany
+    {
+        return $this->hasMany(config("product-module.product_size_class"));
+    }
+
     public function getPrimaryImageUrlAttribute() : ?string
     {
         if(!$this->images()->where("is_primary", true)->exists()) {
@@ -51,5 +72,7 @@ class Product extends Model
 
         return Storage::url($this->images()->where("is_primary", true)->first()->image_url);
     }
+
+    
 
 }

@@ -80,10 +80,58 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('product_colors', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(config('product-module.product_class'));
+            $table->string("label");
+            $table->string("color_hex");
+            $table->int("stock")->default(0);
+            $table->boolean("is_active")->default(false);
+            $table->boolean("is_primary")->default(false);
+
+            $table->timestamps();
+        });
+
+        Schema::create('product_sizes', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(config('product-module.product_class'));
+            $table->string("label");
+            $table->string("value");
+            $table->int("stock")->default(0);
+            $table->boolean("is_active")->default(false);
+            $table->boolean("is_primary")->default(false);
+
+            $table->timestamps();
+        });
+
+        Schema::create('product_reviews', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(config('product-module.product_class'));
+            $table->string("from");
+            $table->double("rating");
+            $table->string("message")->nullable();
+
+            $table->timestamps();
+        });
+
+        Schema::create('product_wrappers', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(config('product-module.product_class'));
+            $table->foreignIdFor(config('product-module.product_variant_class'))->nullable();
+            $table->foreignIdFor(config('product-module.product_size_class'))->nullable();
+            $table->foreignIdFor(config('product-module.product_color_class'))->nullable();
+
+            $table->timestamps();
+        });
+
     }
 
     public function down()
     {
+        Schema::dropIfExists("product_wrappers");
+        Schema::dropIfExists("product_reviews");
+        Schema::dropIfExists("product_sizes");
+        Schema::dropIfExists("product_colors");
         Schema::dropIfExists("product_images");
         Schema::dropIfExists("product_variants");
         Schema::dropIfExists("category_product");
