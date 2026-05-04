@@ -369,5 +369,26 @@ class ProductModule {
         return $product->reviews;
     }
 
+    public function findProductById(int $productId) : \Illuminate\Database\Eloquent\Model|Product
+    {
+        // Logic to find a product by ID
+
+        return config("product-module.product_class")::findOrFail($productId);
+    }
+
+    public function findProductVariantById(int $variantId) : \Illuminate\Database\Eloquent\Model|ProductVariant
+    {
+        // Logic to find a product variant by ID
+
+        return config("product-module.product_variant_class")::findOrFail($variantId);
+    }
+
+    public function findCategoryById(int $categoryId) : \Illuminate\Database\Eloquent\Model|\CodeWithDiki\ProductModule\Models\Category
+    {
+        // Logic to find a category by ID
+
+        return config("product-module.category_class")::findOrFail($categoryId);
+    }
+
 
 }
